@@ -1,0 +1,507 @@
+<!-- ========================= FOOTER ========================= -->
+<style type="text/css">
+    .style1 {
+        color: #FFFFFF;
+    }
+    .product-banner-section img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+    
+        #products-container {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 10px 60px;
+            scroll-snap-type: x mandatory;
+        }
+    
+        .product-card {
+            flex: 0 0 150px;
+            scroll-snap-align: start;
+            text-align: center;
+        }
+    
+        .product-title {
+            font-size: 14px;
+            line-height: 1.3;
+            margin-bottom: 4px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    
+        .product-price {
+            font-size: 12px;
+            color: #666;
+        }
+    
+       
+        .cursor-pointer { cursor: pointer; }
+    </style>
+    <section>
+         <section>
+          <div class="product-banner-section py-8">
+        <div class="container relative">
+    
+            <div id="products-container" class="border border-gray-200 rounded-lg bg-white"></div>
+    
+        </div>
+    </div>
+    
+    <div id="product-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden modal-fade opacity-0">
+        <div class="bg-white rounded-lg max-w-md w-full mx-4 overflow-hidden shadow-xl">
+            <div class="relative">
+                <!-- <button id="close-modal" class="absolute right-4 top-4 p-1 rounded-full bg-white/80 hover:bg-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                        <path d="M18 6 6 18"/>
+                        <path d="m6 6 12 12"/>
+                    </svg>
+                </button> -->
+                <!-- <img id="modal-image" src="/placeholder.svg" alt="Product" class="w-full h-64 object-contain bg-gray-50"> -->
+            </div>
+            <div class="p-6">
+                <h3 id="modal-title" class="text-xl font-bold mb-1"></h3>
+                <p id="modal-price" class="text-lg font-semibold text-gray-700 mb-4"></p>
+                <p id="modal-description" class="text-gray-600 mb-6"></p>
+                <a id="modal-link" href="#" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded text-center transition-colors">
+                    View Product
+                </a>
+            </div>
+        </div>
+    </div>
+    
+      </section>
+    </section>
+    
+    <footer class="section-footer bg-secondary">
+    <div class="footer-middle border-0">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="widget widget-about style1">
+                                   <img style="max-height:43px !important; margin-bottom: 16px;margin-top: 22px;"  class="logo" src="<?= base_url().'images/logofolder/'.$gLOGO;?>">
+                                    <p class="style1">Welcome to EWorldGoods, our new and up and coming B2B marketplace. All the content is user posted and eon EworldGoods shall not be held accountable for any offers, company profiles, products, images and other content posted by the user. Incase of any complains, contact us at contactus </p>
+                                    
+                                    <div class="widget-about-info style1">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-4">
+                                                <p><span class="widget-about-title">Got Question? Contact us</span>
+                                                  <a style="color: #ff6a00 !important" href="https://eworldgoods.com/contactus.html">Contact us</a> </p>
+                                                <p><a href="http://translate.google.com/manager/website/">Translate our website</a><div id="google_translate_element"></div><script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-37420746-1'}, 'google_translate_element');
+    }
+    </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>&nbsp;</p>
+                                            </div><!-- End .col-sm-6 -->
+                                            <div class="col-sm-6 col-md-8">
+                                                <span class="widget-about-title">Payment Method</span>
+                                                <figure class="footer-payments">
+                                                    <img src="/assets/images/payments.png" alt="Payment methods" width="272" height="100">                                            </figure><!-- End .footer-payments -->
+                                            </div><!-- End .col-sm-6 -->
+                                        </div><!-- End .row -->
+                                    </div>
+                                    <span class="style1">
+                                    <!-- End .widget-about-info -->
+                                    </span></div>
+                                <span class="style1">
+                                <!-- End .widget about-widget -->
+                                </span></div>
+                            <span class="style1">
+                            <!-- End .col-sm-12 col-lg-3 -->
+                            </span>
+                            <div class="col-sm-4 col-lg-2 style1">
+                                <div class="widget">
+                                    <h4 class="widget-title">Information</h4><!-- End .widget-title -->
+    
+                                    <ul class="widget-list"></ul>
+                                        <li><a style="color: #ffffff" href="aboutus.html">About EworldGoods</a></li>
+                                        <li><a style="color: #ffffff" href="show_page/I%20am%20buyer-43">How to shop on EWorldGoods</a></li>
+                                        <li><a style="color: #ffffff" href="https://www.eworldgoods.com/package.html">Premium Packages</a></li>
+                                        <li><a style="color: #ffffff" href="contactus.html">Contact us</a></li>
+                                        <li><a style="color: #ffffff" href="login.html">Log in</a></li>
+                                    </ul><!-- End .widget-list -->
+                                </div><!-- End .widget -->
+                            </div>
+                            <span class="style1">
+                            <!-- End .col-sm-4 col-lg-3 -->
+                            </span>
+                            <div class="col-sm-4 col-lg-2 style1">
+                                <div class="widget">
+                                    <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+    
+                                    <ul class="widget-list">
+                                        <li><a href="show_page/Help-12">FAQ</a></li>
+                                        <li><a href="show_page/terms_conditions-26">Terms and conditions</a></li>
+                                        <li><a href="privacy_policy.html">Privacy Policy</a></li>
+                                    </ul><!-- End .widget-list -->
+                                </div><!-- End .widget -->
+                            </div>
+                            <span class="style1">
+                        <!-- End .row -->
+                        </span></div>
+                    <span class="style1">
+                    <!-- End .container -->
+                    </span></div>
+    <span class="style1">
+    <!-- End .footer-middle -->
+                </span>
+    <div class="footer-bottom style1">
+                    <div class="container">
+                        <p class="footer-copyright">Copyright � 2024 EWorldGoods. All Rights Reserved.</p><!-- End .footer-copyright -->
+         
+                        <div class="social-icons social-icons-color">
+                            <span class="social-label">Social Media</span>                    </div><!-- End .soial-icons -->
+                    </div><!-- End .container -->
+                </div>
+    <span class="style1">
+    <!-- End .footer-bottom -->
+            </span></footer>
+    <span class="style1">
+        <!-- End .footer -->
+        </div>
+        <!-- End .page-wrapper -->
+    </span>
+    <button id="scroll-top" title="Back to Top"></button>
+    <!-- ========================= FOOTER END // ========================= -->
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6656bd679a809f19fb367f32/1hv1d7mqo';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBJF04VGWH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-XBJF04VGWH');
+      
+      const products = [
+        {
+            id: "1",
+            name: "Forehead Thermometer for Adults and Kids",
+            price: 19.99,
+            image: "https://m.media-amazon.com/images/I/6181hCoJF5L._SX522_.jpg",
+            link: "https://amzn.to/41ksI3u",
+            description: "Lifetime Assurance: We stand behind the quality of our olive oil dispenser bottle. If you're unsatisfied or face any issues, contact us anytime. We offer lifetime support to ensure you’re fully satisfied with this essential kitchen essential."
+        },
+        {
+            id: "2",
+            name: "Voltaren Arthritis Pain Gel for Powerful",
+            price: 24.33 ,
+            image: "https://m.media-amazon.com/images/I/81KM3c7gkZL._AC_SX679_PIbundle-2,TopRight,0,0_SH20_.jpg",
+            link: "https://amzn.to/4iDYxLJ",
+            description: "Perfect Kitchen Tool: Our meat chopper tool with 5 wide beveled pinwheel blades, which is easier to chop and crumble food than other products with three or four blades. This meat masher can not only chop all kinds of meats for quick cooking, but is also very suitable for mixing and mashing other foods, such as gelatin, fruits, vegetables, etc."
+        },
+        {
+            id: "3",
+            name: "Upgraded 3-in-1 Car Phone Holder Mount",
+            price: 9.99,
+            image: "https://m.media-amazon.com/images/I/71O2w5u9ECL._AC_SX679_.jpg",
+            link: "https://amzn.to/4ihfpaL",
+            description: "【High Power Motor & 3-in-1 Folding Treadmill】This treadmills for home is powered by a 2.5 hp high power motor, which can withstand up to 340 pounds of weight! Offers 1-10km/h speed adjustment, 1-3km/h leisure mode, 1-5km/h walking mode, 5-10km/h running mode,enough to meet your needs!"
+        },
+        {
+            id: "4",
+            name: "6 Pack Mobile Phone Gaming Finger Sleeves",
+            price: 5.99,
+            image: "https://m.media-amazon.com/images/I/716x23yaLtL._AC_SX679_.jpg",
+            link: "https://amzn.to/4hZGuQ7",
+            description: "HIGH-QUALITY MATERIAL: Seat cover made of high quality leather not only enhances your touch but also protects the original seat from damage, with good resilience to give you maximum comfort while driving. Our coverado leather seat covers are soft, durable, waterproof, scratch resistant and can be used for a long time."
+        },
+        {
+            id: "5",
+            name: "Logitech MK270 Wireless Keyboard And Mouse Combo For Windows",
+            price: 19.99,
+            image: "https://m.media-amazon.com/images/I/61gSpxZTZZL._AC_SX679_.jpg",
+            link: "https://amzn.to/3XoeEo6",
+            description: "Compatible with Starlink Mini rectangular dish, DC barrel male plug connects to Mini dish, with DC male plug, supports connect starlink mini dish outdoor to get stable network supply."
+        },
+        {
+            id: "6",
+            name: "MNN Portable Monitor 15.6inch FHD 1080P USB",
+            price: 79.99,
+            image: "https://m.media-amazon.com/images/I/81Q9vMNUOyL._AC_SX679_.jpg",
+            link: "https://amzn.to/4kAqpSL",
+            description: "Designed for Magsafe】 - The most fashionable iphone car mount in 2025 Magsafe is designed for iphone 16/15/14/13/12 Pro Max Mini and official Magsafe cases and other magnetic phone cases and can be fixed directly to these phones without the need to affix metal plates. All Android Phones Will Work: Metal rings are provided; they fit cases and other phones without magsafe."
+        },
+        {
+            id: "7",
+            name: "Electronic Wipes Screen Cleaner  ",
+            price: 14.97,
+            image: "https://m.media-amazon.com/images/I/71bke0Dr43L._AC_SX679_PIbundle-80,TopRight,0,0_SH20_.jpg",
+            link: "https://amzn.to/41szxQC",
+            description: "Due to vacuum packaging, the swaddle blanket may wrinkle. You could take it out and shake it a few times or iron it at a low temperature and it will be back to normal and fluffy again."
+        },
+        {
+            id: "8",
+            name: "Dealmore Lace Long Sleeve Floral Mesh Mockneck",
+            price: 25.99,
+            image: "https://m.media-amazon.com/images/I/81p9R4509sL._AC_SY879_.jpg",
+            link: "https://amzn.to/4kAqGVN",
+            description: "Animal face plush hooded bath robe."
+          },
+          {
+            id: "9",
+            name: "Men's Fashion Henley Shirt Classic",
+            price: 22.94 ,
+            image: "https://m.media-amazon.com/images/I/6156ZF+ShnL._AC_SX679_.jpg",
+            link: "https://amzn.to/43eNVyl",
+            description: "Skechers Air-Cooled Memory Foam comfort insole"
+          },
+          {
+            id: "10",
+            name: "Formal Dress Shoes for Mens",
+            price: 129.79 ,
+            image: "https://m.media-amazon.com/images/I/81DdlctlPOL._AC_SY695_.jpg",
+            link: "https://amzn.to/3XoXwPh",
+            description: "Advanced lacing structure with straps extending from midsole for extra support."
+          },
+          {
+            id: "11",
+            name: "Winter Snow Boots for Women",
+            price: 5.99  ,
+            image: "https://m.media-amazon.com/images/I/61joYYhOJ8L._AC_SY695_.jpg",
+            link: "https://amzn.to/41ARGNi",
+            description: "Safe HDPS Material: Constructed from stable HDPS material, this garden box resists cracking, fading, peeling, and rotting under all weather conditions; requires minimal maintenance with no need for oil treatment."
+          },
+          {
+            id: "12",
+            name: "Fullstar Vegetable Chopper",
+            price: 29.97  ,
+            image: "https://m.media-amazon.com/images/I/810H7ed9agL._AC_SX679_.jpg",
+            link: "https://amzn.to/3Xs1DtR",
+            description: "GARDENING ESSENTIAL: Steel blade plant shears ideal for a variety of pruning tasks like cutting flower stems; gardening shears with bypass action are Ideal for cutting delicate stems as the bypass action is less likely to cause damage to the stems. If you're unsatisfied or face any issues, contact us anytime. We offer lifetime support to ensure you’re fully satisfied with this essential kitchen essential."
+          },
+          {
+            id: "13",
+            name: "Etekcity Food Kitchen Scale",
+            price: 13.99   ,
+            image: "https://m.media-amazon.com/images/I/91YrLTBnMcL._SX522_.jpg",
+            link: "https://amzn.to/43kdlKS",
+            description: "MOISTURE WICKING UNDERWEAR:Constructed with a blend of 95% cotton and 5% spandex,the set boasts exceptional moisture-wicking properties.It's REALLY COOL MATERIAL fabric ensures."
+          },
+          {
+            id: "14",
+            name: "Ingenuity Keep Cozy 3-in-1 Grow with Me Vibrating Baby Bouncer",
+            price: 49.98,
+            image: "https://m.media-amazon.com/images/I/71FCyGJyXgL._SX679_.jpg",
+            link: "https://amzn.to/3Df6Xd8",
+            description: "[Filter Blue light Glasses] Blue light blocker with UV400 protection, help you resist 99.9% harmful blu-ray, reduce discomfort from TV, phone, digital screen and reading under fluorescent lights; Reduce glare, fatigue, headache, eye strain and dry eye, protect your vision and help sleep better."
+          },
+          {
+            id: "15",
+            name: "HelloBaby No WiFi Baby Monitor 5 Screen",
+            price: 79.99 ,
+            image: "https://m.media-amazon.com/images/I/61WoQMri81L._SX679_.jpg",
+            link: "https://amzn.to/4hWqQF5",
+            description: "LIVE YOUR BEST LIFE FROM THE INSIDE OUT: These complete vitamins for women, specially formulated with nutrients that address your health concerns"
+          },
+          {
+            id: "16",
+            name: "Enfamil NeuroPro Gentlease Baby Formula",
+            price: 40.99,
+            image: "https://m.media-amazon.com/images/I/71B6sMifyIL._AC_SX679_.jpg",
+            link: "https://amzn.to/43o2waR",
+            description: "YOUR DREAM TUMBLER: Whichever way your day flows, the H2.0 FlowState tumbler keeps you refreshed with fewer refills. Double wall vacuum insulation means drinks stay cold, iced or hot for hours.."
+          },
+          {
+            id: "17",
+            name: "OLANLY Bathroom Rugs 30x20, Extra Soft Absorbent",
+            price: 8.98,
+            image: "https://m.media-amazon.com/images/I/91DYNS5MNOL._AC_SX679_.jpg",
+            link: "https://amzn.to/4bornx2",
+            description: "STRONG & EFFECTIVE: Test X180 Gummies prime your body to boost testosterone naturally, helping you achieve new levels of masculinity. Every serving contains a scientifically tested ingredient shown to support testosterone levels."
+          },
+          {
+            id: "18",
+            name: "Lysol All-Purpose Cleaner, Sanitizing ",
+            price: 5.29 ,
+            image: "https://m.media-amazon.com/images/I/71Zsi+uDHdL._AC_SX679_.jpg",
+            link: "https://amzn.to/3Df7snw",
+            description: "GilletteLabs men's razor: for effortless shaving in one efficient stroke."
+          },
+          {
+            id: "19",
+            name: "Veken Stainless Steel Shower Caddy 6-Pack",
+            price: 19.99,
+            image: "https://m.media-amazon.com/images/I/71TaJs92k-L._AC_SX679_PIbundle-6,TopRight,0,0_SH20_.jpg",
+            link: "https://amzn.to/4inJXI6",
+            description: "All Over Bodycare: formulated to work on your hands, face, and body."
+          },
+          {
+            id: "20",
+            name: "Under Cabinet Lights",
+            price: 30.99,
+            image: "https://m.media-amazon.com/images/I/6151UbJ3ytL._AC_SX679_PIbundle-2,TopRight,0,0_SH20_.jpg",
+            link: "https://amzn.to/41oGTUS",
+            description: "Ultra-Smooth Shaving: Upgrade your grooming routine with MANSPOT Groin Pubic Body Hair Trimmer. Bid farewell to traditional shavers' discomfort and pain as our anti-cut blade and high-power motor deliver a faster, smoother, and more comfortable shave. No more nicks or burns, just a clean and confident look."
+          },
+          {
+            id: "21",
+            name: "Backyard Discovery Aggie",
+            price: 338.41 ,
+            image: "https://m.media-amazon.com/images/I/A1ZOP0lMTwL._AC_SX679_.jpg",
+            link: "https://amzn.to/3EXpKKu",
+            description: "SUPER ABSORBENT MICROFIBER HAIR TOWEL: Hicober hair towels are made of a super absorbent microfiber towel, breathable, odorless for quick dry hair."
+          },
+          {
+            id: "22",
+            name: "GROWIT Heavy Duty Gardening Tools",
+            price: 24.97,
+            image: "https://m.media-amazon.com/images/I/71y1Xnf+UtL._AC_SX679_.jpg",
+            link: "https://amzn.to/3Dbd5mS",
+            description: "BLADDER LEAK PROTECTION - Absorbent RapidDry core holds up to 5x the average leak."
+          },
+          {
+            id: "23",
+            name: "Portable Electric Chainsaw Cordless ",
+            price: 30.36,
+            image: "https://m.media-amazon.com/images/I/71es4-uG11L._AC_SX679_.jpg",
+            link: "https://amzn.to/3QIXSfX",
+            description: "IDEAL GIFTS FOR MEN, WOMEN - Our gardening tools set is the ultimate gift for any men women who loves to garden. Including rust-proof and durable tools, this set ensures she has everything she needs for a flourishing garden. The ergonomic design makes it comfortable to use, making it a thoughtful gift for wife, mom, daughter, or grandma.."
+          },
+          {
+            id: "24",
+            name: "TONULAX Solar Garden Lights ",
+            price: 11.98 ,
+            image: "https://m.media-amazon.com/images/I/71oGQ4MIPsL._AC_SX679_PIbundle-2,TopRight,0,0_SH20_.jpg",
+            link: "https://amzn.to/4bEt7m9",
+            description: "【4 in 1 function】This is a 4-in-1 multifunctional soil tester.Our soil tester fastly to measure soil moisture, pH, temperature and sunlight to help you take better care of flowers and plants.You can know when you need to water your soil by measuring moisture and pH & Temperature value of the soil and sunlight level of plants with it."
+          },
+          {
+            id: "25",
+            name: "Four Candies Cute Mechanical Pencil Set ",
+            price: 7.59 ,
+            image: "https://m.media-amazon.com/images/I/71yim77YZpL._AC_SX679_.jpg",
+            link: "https://amzn.to/3EUdSsH",
+            description: "Lightweight, breathable mesh upper with synthetic overlays for added durability & support."
+          },
+          {
+            id: "26",
+            name: "Folding Conference Table ",
+            price: 2338 ,
+            image: "https://m.media-amazon.com/images/I/813YYCWCgYL._AC_SX679_.jpg",
+            link: "https://amzn.to/3Df8xMk",
+            description: "MEN'S LEATHER SNEAKERS: Leather upper features overlays for support and perforations for airflow."
+          },
+          {
+            id: "27",
+            name: "MATEIN Travel Laptop Backpack ",
+            price: 21.99 ,
+            image: "https://m.media-amazon.com/images/I/81WjalMN8mL._AC_SX679_.jpg",
+            link: "https://amzn.to/4imdJwM",
+            description: "PERFECT FIT WITH A CONTEMPORARY EDGE: Designed for a modern, athletic fit, these men's t-shirts hug you in all the right places without being too tight. Thanks to the classic side seam, you’ll always look sharp."
+          },
+          {
+            id: "28",
+            name: "TruSkin Face Serum Trio – Hyaluronic Acid",
+            price: 44.95,
+            image: "https://m.media-amazon.com/images/I/7160CSLVT-L._SX679_.jpg",
+            link: "https://amzn.to/3DmmSX6",
+            description: "SOFT & LIGHTWEIGHT - Super-soft and lightweight fabric feels great up against your skin.."
+          },
+          {
+            id: "29",
+            name: "Under Eye Patches - 60 Pcs - 24K Gold Eye Mask",
+            price: 7.99 ,
+            image: "https://m.media-amazon.com/images/I/71ViE-GAVOL._SX679_.jpg",
+            link: "https://amzn.to/4iiQbbT",
+            description: "NEW built-in stylus. Jot notes, edit photos, sketch artwork, and navigate effortlessly with an improved stylus and updated software."
+          },
+          {
+            id: "30",
+            name: "CDE Forever Love Heart Necklaces for Women",
+            price: 79.99,
+            image: "https://m.media-amazon.com/images/I/71v7IdSXvTL._AC_SY695_.jpg",
+            link: "https://amzn.to/41BvmTz",
+            description: " NO NEED TO SEARCH FOR VARIETY OF Baby Crib toys - Our nursery mobile is made for baby's view, Combination of high-contrast animals and shapes (Contains: Round, Square, Elephant, Fawn, Zebra), Experiencing bold black-and-white contrast helps stimulate development in the retina and the optic nerve. Before they are able to clearly see colors, babies respond to the strong contrast between black and white, which makes this the perfect first toy for young, developing brains."
+          },
+        ];
+    
+        function initProductBanner() {
+            const productsContainer = document.getElementById('products-container');
+          
+            const productModal = document.getElementById('product-modal');
+            // const closeModalBtn = document.getElementById('close-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalTitle = document.getElementById('modal-title');
+            const modalPrice = document.getElementById('modal-price');
+            const modalDescription = document.getElementById('modal-description');
+            const modalLink = document.getElementById('modal-link');
+    
+      function renderProducts() {
+        const container = document.getElementById("products-container");
+        container.innerHTML = "";
+    
+        products.forEach((product) => {
+            const productElement = document.createElement("div");
+            productElement.classList.add("product-card", "p-2");
+            
+            productElement.addEventListener("click", () => {
+                window.open(product.link, "_blank");
+            });
+    
+            productElement.innerHTML = `
+                <div class="flex flex-col items-center cursor-pointer">
+                    <img src="${product.image}" alt="${product.name}" class="mb-2">
+                    <h3 class="product-title">${product.name}</h3>
+                    <p class="product-price">$${product.price.toFixed(2)}</p>
+                </div>
+            `;
+            container.appendChild(productElement);
+        });
+    }
+    
+    
+            function openProductModal(product) {
+                modalImage.src = product.image;
+                modalImage.alt = product.name;
+                modalTitle.textContent = product.name;
+                modalPrice.textContent = `$${product.price.toFixed(2)}`;
+                modalDescription.textContent = product.description;
+                modalLink.href = product.link;
+                
+                productModal.classList.remove('hidden');
+                setTimeout(() => productModal.classList.add('opacity-100'), 10);
+            }
+    
+            // function closeProductModal() {
+            //     productModal.classList.remove('opacity-100');
+            //     setTimeout(() => productModal.classList.add('hidden'), 300);
+            // }
+    
+           
+            // closeModalBtn.addEventListener('click', closeProductModal);
+    
+            // productModal.addEventListener('click', (e) => {
+            //     if (e.target === productModal) closeProductModal();
+            // });
+    
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !productModal.classList.contains('hidden')) {
+                    closeProductModal();
+                }
+            });
+    
+            renderProducts();
+        }
+    
+        document.addEventListener('DOMContentLoaded', initProductBanner);
+    </script>
+    </body>
+    </html>

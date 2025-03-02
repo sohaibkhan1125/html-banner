@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Banner</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .scrollbar-hide {
+      -ms-overflow-style: none;  
+      scrollbar-width: none;  
+    }
+
+    .modal-fade {
+      transition: opacity 0.3s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-7xl mx-auto my-8 px-4">
+    
+    <div class="relative border border-gray-200 rounded-lg overflow-hidden bg-white">
+      <button id="scroll-left" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm p-2 rounded-full shadow-md hover:bg-gray-100">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+      </button>
+      
+      <div id="products-container" class="flex overflow-x-auto gap-4 py-4 px-12 scrollbar-hide snap-x">
+      </div>
+      
+      <button id="scroll-right" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm p-2 rounded-full shadow-md hover:bg-gray-100">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </button>
+    </div>
+    
+    <div id="product-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden modal-fade opacity-0">
+      <div class="bg-white rounded-lg max-w-md w-full mx-4 overflow-hidden shadow-xl">
+        <div class="relative">
+          <button id="close-modal" class="absolute right-4 top-4 p-1 rounded-full bg-white/80 hover:bg-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+              <path d="M18 6 6 18"/>
+              <path d="m6 6 12 12"/>
+            </svg>
+          </button>
+          
+          <img id="modal-image" src="/placeholder.svg" alt="Product" class="w-full h-64 object-contain bg-gray-50">
+        </div>
+        
+        <div class="p-6">
+          <h3 id="modal-title" class="text-xl font-bold mb-1"></h3>
+          <p id="modal-price" class="text-lg font-semibold text-gray-700 mb-4"></p>
+          <p id="modal-description" class="text-gray-600 mb-6"></p>
+          <a id="modal-link" href="#" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded text-center transition-colors">
+            View Product
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const products = [
+    {
+        id: "1",
+        name: "COOFANDY Men's Linen Shirts",
+        price: 29.99,
+        image: "https://m.media-amazon.com/images/I/81Y6r7df7OL._AC_SY879_.jpg",
+        link: "https://amzn.to/4bkIujo",
+        description: "COOFANDY LINEN SHIRT --- Mens Casual Button Down shirt is made of high quality cotton linen fabric."
+    },
+    {
+        id: "2",
+        name: "Darong Women's 2 Piece Outfits",
+        price: 39.89,
+        image: "https://m.media-amazon.com/images/I/61Zvt1ADr3L._AC_SY879_.jpg",
+        link: "https://amzn.to/4kyVVR5",
+        description: "FABRIC:This cute set is a must for slipping on in the spring and summer to come.Designed in soft stretchy and lightweight fabric to give you a wonderful wearing experience."
+    },
+    {
+        id: "3",
+        name: "LISEN Retractable Car Charger",
+        price: 16.98,
+        image: "https://m.media-amazon.com/images/I/71R6ka8Os4L._AC_SL1500_.jpg",
+        link: "https://amzn.to/4kcMGWi",
+        description: "LISEN 4-in-1 Retractable Car Charger combines a compact design with powerful performance."
+    },
+    {
+        id: "4",
+        name: "Apple Carplay Screen for Car",
+        price: 69.99,
+        image: "https://m.media-amazon.com/images/I/715LHnNFNmL._AC_SL1500_.jpg",
+        link: "https://amzn.to/41yLfu7",
+        description: "Wireless Apple Carplay & Android Auto with Voice Control."
+    },
+    {
+        id: "5",
+        name: "Nelko Label Maker Machine",
+        price: 29.99,
+        image: "https://m.media-amazon.com/images/I/611JXKo19yL._AC_SL1500_.jpg",
+        link: "https://amzn.to/4kkFV4H",
+        description: "2024 New Version: Wireless bluetooth label maker can slip into your pocket."
+    },
+    {
+        id: "6",
+        name: "Walker's Razor Slim Ultra",
+        price: 33.81,
+        image: "https://m.media-amazon.com/images/I/61Denlo-ceL._AC_SL1500_.jpg",
+        link: "https://amzn.to/43o0Spk",
+        description: "Walker's Razor Ear Muffs protect against hazardous noises while letting you hear surroundings."
+    },
+    {
+        id: "7",
+        name: "Beats Studio Buds",
+        price: 103.56,
+        image: "https://m.media-amazon.com/images/I/41ijQEHFicS._AC_SL1500_.jpg",
+        link: "https://amzn.to/4ik3vgs",
+        description: "Custom acoustic platform delivers powerful, balanced sound."
+    },
+    {
+        id: "8",
+        name: "Gildan Men's Crew T-Shirts, Multipack, Style G1100",
+        price: 18.77,
+        image: "https://m.media-amazon.com/images/I/71p-Sidcu8S._AC_SX679_.jpg",
+        link: "https://amzn.to/4hV7YpS",
+        description: "Custom acoustic platform delivers powerful, balanced sound...."
+      },
+      {
+        id: "9",
+        name: "Hanes Men's Boxer Brief",
+        price: 18.00 ,
+        image: "https://m.media-amazon.com/images/I/81p0a0CNhZL._AC_SX679_.jpg",
+        link: "https://amzn.to/4ijvIE1",
+        description: "America's #1 Men's Underwear Brand - Source: Circana/Consumer Tracking Service, U.S. Sales, Underwear Bottoms and Undershirts, 12 months ending November 2023."
+      },
+      {
+        id: "10",
+        name: "Upgraded Version Ultrasonic Pest",
+        price: 23.99  ,
+        image: "https://m.media-amazon.com/images/I/71OpPbesGFL._AC_SX679_.jpg",
+        link: "https://amzn.to/41f5f3w",
+        description: "Working principle:Ultrasonic insect indoor repellents use ultrasound to stimulate the brain neurons of pests. Long term stimulation can cause damage to the neurons of pests, thereby achieving the goal of expelling pests."
+      },
+      {
+        id: "11",
+        name: "Bluetooth Speaker with HD Sound",
+        price: 39.99  ,
+        image: "https://m.media-amazon.com/images/I/81l7mB5LhsL._AC_SX679_.jpg",
+        link: "https://amzn.to/4bpOcRa",
+        description: "[Immersive Sound Experience & Dual Connectivity] Experience unparalleled sound quality with this wireless Bluetooth speaker's 2 drivers and advanced technology that delivers powerful, well-balanced sound with minimal distortion. Connect two speakers together to create an immersive stereo sound experience and fill any room with powerful sound. Perfect for gaming, music, and movie playback."
+      },
+      {
+        id: "12",
+        name: "TrendPlain 16oz/470ml",
+        price: 9.99  ,
+        image: "https://m.media-amazon.com/images/I/71daWq9PJVL._AC_SX679_.jpg",
+        link: "https://amzn.to/3ETtWLh",
+        description: "Lifetime Assurance: We stand behind the quality of our olive oil dispenser bottle. If you're unsatisfied or face any issues, contact us anytime. We offer lifetime support to ensure you’re fully satisfied with this essential kitchen essential."
+      },
+      {
+        id: "13",
+        name: "Etekcity Food Kitchen Scale",
+        price: 13.99  ,
+        image: "https://m.media-amazon.com/images/I/91YrLTBnMcL._SX522_.jpg",
+        link: "https://amzn.to/3QDl7Yy",
+        description: "𝗘𝗳𝗳𝗼𝗿𝘁𝗹𝗲𝘀𝘀 𝗪𝗲𝗶𝗴𝗵𝗶𝗻𝗴: Supports 5 units (oz/lb:oz/fl'oz/g/mL), tare function, and includes 2 AAA batteries for hassle-free operation."
+      },
+      {
+        id: "14",
+        name: "TruSkin Vitamin C Serum – Anti Aging Facial Serum",
+        price: 38.99 ,
+        image: "https://m.media-amazon.com/images/I/51A9PlUPg3L._SX679_.jpg",
+        link: "https://amzn.to/4hYIM1Q",
+        description: "SKIN BRIGHTENING SERUM: Vitamin C evens skin tone, helps to fight against the effects of free radical damage, and supports collagen to improve vibrance, and improves the look of dark spots, dark circles, fine lines & wrinkles."
+      },
+      {
+        id: "15",
+        name: "Sunny Health & Fitness Mini Steppers",
+        price: 47.70,
+        image: "https://m.media-amazon.com/images/I/710Ato8nLRL._AC_SX679_.jpg",
+        link: "https://amzn.to/4i0lecR",
+        description: "Original Stepper 】The Sunny Mini Steppers for exercise at home: Perfect for portable, sleek, and compact stair stepping. Achieve your cardio goals anytime, anywhere. Backed by a legacy of over 30,000 reviews, we are the trusted choice of more than a million satisfied customers. Sunny is the authentic brand for quality exercise steppers."
+      },
+      {
+        id: "16",
+        name: "Cetaphil Baby Wash & Shampoo",
+        price: 14.97,
+        image: "https://m.media-amazon.com/images/I/71l4UXnTuiL._SX679_.jpg",
+        link: "https://amzn.to/4ilX8Jg",
+        description: "CETAPHIL BABY BATH ESSENTIALS KIT: Daily cleanse and moisturize routine specially designed for baby's delicate skin."
+      },
+      {
+        id: "17",
+        name: "Infantino Flip Advanced 4-in-1 Carrier",
+        price: 30.99,
+        image: "https://m.media-amazon.com/images/I/81rj+Or7PkL._SX679_.jpg",
+        link: "https://amzn.to/4kmuzNJ",
+        description: "DESIGN - 4-in-1 carrier with adjustable ergonomic seat, shoulder straps and waist belt to shift weight to the wearers hips for a more comfortable fit."
+      },
+      {
+        id: "18",
+        name: "Sea Salt Spray for Hair Men",
+        price: 9.88,
+        image: "https://m.media-amazon.com/images/I/71+H-XJ+qJL._SX679_.jpg",
+        link: "https://amzn.to/3EWIlGy",
+        description: "Refreshing and effective - This refreshing sea salt spray men lifts and volumizes hair, enhances natural curls and waves, and creates a natural beach hair look with texture.."
+      },
+      {
+        id: "19",
+        name: "Back Scrubber for Shower",
+        price: 14.99,
+        image: "https://m.media-amazon.com/images/I/61AbMwe66FL._AC_SX679_.jpg",
+        link: "https://amzn.to/41jJoIc",
+        description: "Upgraded Double-Sided Brush Head: silicone body brush, extra-long silicone bristle head can produce a lot of foam, soft and skin-friendly, and the other side massage brush head can effectively exfoliate and promote blood circulation."
+      },
+      {
+        id: "20",
+        name: "Groin & Body Hair Trimmer for Men",
+        price: 39.98,
+        image: "https://m.media-amazon.com/images/I/71q31djwdiL._AC_SX679_.jpg",
+        link: "https://amzn.to/41dnc2s",
+        description: "Ultra-Smooth Shaving: Upgrade your grooming routine with MANSPOT Groin Pubic Body Hair Trimmer. Bid farewell to traditional shavers' discomfort and pain as our anti-cut blade and high-power motor deliver a faster, smoother, and more comfortable shave. No more nicks or burns, just a clean and confident look."
+      },
+      {
+        id: "21",
+        name: "Hicober Microfiber Hair Towel",
+        price: 24.99,
+        image: "https://m.media-amazon.com/images/I/81OfvjP4N7L._SX679_.jpg",
+        link: "https://amzn.to/3D1t5YD",
+        description: "SUPER ABSORBENT MICROFIBER HAIR TOWEL: Hicober hair towels are made of a super absorbent microfiber towel, breathable, odorless for quick dry hair."
+      },
+      {
+        id: "22",
+        name: "Adult Moderate Long Incontinence Pads",
+        price: 14.97,
+        image: "https://m.media-amazon.com/images/I/81PWPngEiVL._AC_SX679_.jpg",
+        link: "https://amzn.to/4hjUQK5",
+        description: "BLADDER LEAK PROTECTION - Absorbent RapidDry core holds up to 5x the average leak."
+      },
+      {
+        id: "23",
+        name: "Heavy Duty Gardening Tools ",
+        price: 24.97,
+        image: "https://m.media-amazon.com/images/I/71y1Xnf+UtL._AC_SX679_.jpg",
+        link: "https://amzn.to/43jleA5",
+        description: "IDEAL GIFTS FOR MEN, WOMEN - Our gardening tools set is the ultimate gift for any men women who loves to garden. Including rust-proof and durable tools, this set ensures she has everything she needs for a flourishing garden. The ergonomic design makes it comfortable to use, making it a thoughtful gift for wife, mom, daughter, or grandma.."
+      },
+      {
+        id: "24",
+        name: "Moisture Meter Digital Plant Temperature ",
+        price: 32.98,
+        image: "https://m.media-amazon.com/images/I/61xy32q7FdL._SX522_.jpg",
+        link: "https://amzn.to/3ETI4Ej",
+        description: "【4 in 1 function】This is a 4-in-1 multifunctional soil tester.Our soil tester fastly to measure soil moisture, pH, temperature and sunlight to help you take better care of flowers and plants.You can know when you need to water your soil by measuring moisture and pH & Temperature value of the soil and sunlight level of plants with it."
+      },
+      {
+        id: "25",
+        name: "Under Armour Men's Charged ",
+        price: 59.99,
+        image: "https://m.media-amazon.com/images/I/61+162RpUWL._AC_SY695_.jpg",
+        link: "https://amzn.to/4bum9A0",
+        description: "Lightweight, breathable mesh upper with synthetic overlays for added durability & support."
+      },
+      {
+        id: "26",
+        name: "Nike Men's Air Monarch ",
+        price: 69.98 ,
+        image: "https://m.media-amazon.com/images/I/81sPYV0dwsL._AC_SX695_.jpg",
+        link: "https://amzn.to/4h9wr9D",
+        description: "MEN'S LEATHER SNEAKERS: Leather upper features overlays for support and perforations for airflow."
+      },
+      {
+        id: "27",
+        name: "True Classic Mens T-Shirts ",
+        price: 89.99 ,
+        image: "https://m.media-amazon.com/images/I/61o67nKv4NL._AC_SY879_.jpg",
+        link: "https://amzn.to/4ieEtjf",
+        description: "PERFECT FIT WITH A CONTEMPORARY EDGE: Designed for a modern, athletic fit, these men's t-shirts hug you in all the right places without being too tight. Thanks to the classic side seam, you’ll always look sharp."
+      },
+      {
+        id: "28",
+        name: "Hanes Men’s Short Sleeve Graphic T-shirt",
+        price: 15.00 ,
+        image: "https://m.media-amazon.com/images/I/81L6CmuDi-L._AC_SX679_.jpg",
+        link: "https://amzn.to/4hYXl5w",
+        description: "SOFT & LIGHTWEIGHT - Super-soft and lightweight fabric feels great up against your skin.."
+      },
+      {
+        id: "29",
+        name: "Moto G Stylus 5G",
+        price: 249.99 ,
+        image: "https://m.media-amazon.com/images/I/61LE9-6KxdL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+        link: "https://amzn.to/4kjRZTQ",
+        description: "NEW built-in stylus. Jot notes, edit photos, sketch artwork, and navigate effortlessly with an improved stylus and updated software."
+      },
+      {
+        id: "30",
+        name: "teytoy My First Baby Crib Mobile",
+        price: 27.99 ,
+        image: "https://m.media-amazon.com/images/I/41pgHpmJbKL._SX300_SY300_QL70_FMwebp_.jpg",
+        link: "https://amzn.to/41fjWnc",
+        description: " NO NEED TO SEARCH FOR VARIETY OF Baby Crib toys - Our nursery mobile is made for baby's view, Combination of high-contrast animals and shapes (Contains: Round, Square, Elephant, Fawn, Zebra), Experiencing bold black-and-white contrast helps stimulate development in the retina and the optic nerve. Before they are able to clearly see colors, babies respond to the strong contrast between black and white, which makes this the perfect first toy for young, developing brains."
+      },
+    ];
+
+    const productsContainer = document.getElementById('products-container');
+    const scrollLeftBtn = document.getElementById('scroll-left');
+    const scrollRightBtn = document.getElementById('scroll-right');
+    const productModal = document.getElementById('product-modal');
+    const closeModalBtn = document.getElementById('close-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalTitle = document.getElementById('modal-title');
+    const modalPrice = document.getElementById('modal-price');
+    const modalDescription = document.getElementById('modal-description');
+    const modalLink = document.getElementById('modal-link');
+
+    function renderProducts() {
+      productsContainer.innerHTML = '';
+      
+      products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'flex-none w-[150px] snap-start border border-gray-200 rounded-md overflow-hidden hover:shadow-md transition-shadow cursor-pointer';
+        productCard.innerHTML = `
+          <div class="relative h-[150px] w-full">
+            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+          </div>
+          <div class="p-2">
+            <h3 class="text-sm font-medium truncate">${product.name}</h3>
+            <p class="text-sm font-bold">$${product.price.toFixed(2)}</p>
+          </div>
+        `;
+        
+        productCard.addEventListener('click', () => {
+          openProductModal(product);
+        });
+        
+        productsContainer.appendChild(productCard);
+      });
+    }
+
+    function openProductModal(product) {
+      modalImage.src = product.image;
+      modalImage.alt = product.name;
+      modalTitle.textContent = product.name;
+      modalPrice.textContent = `$${product.price.toFixed(2)}`;
+      modalDescription.textContent = product.description || 'No description available.';
+      modalLink.href = product.link;
+      
+      productModal.classList.remove('hidden');
+      setTimeout(() => {
+        productModal.classList.add('opacity-100');
+      }, 10);
+    }
+
+    function closeProductModal() {
+      productModal.classList.remove('opacity-100');
+      setTimeout(() => {
+        productModal.classList.add('hidden');
+      }, 300);
+    }
+
+    scrollLeftBtn.addEventListener('click', () => {
+      productsContainer.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+
+    scrollRightBtn.addEventListener('click', () => {
+      productsContainer.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+
+    closeModalBtn.addEventListener('click', closeProductModal);
+
+    productModal.addEventListener('click', (e) => {
+      if (e.target === productModal) {
+        closeProductModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !productModal.classList.contains('hidden')) {
+        closeProductModal();
+      }
+    });
+
+    renderProducts();
+  </script>
+</body>
+</html>
